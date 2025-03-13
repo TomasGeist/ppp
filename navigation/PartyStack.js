@@ -1,10 +1,9 @@
-// navigation/BattlePassStack.js
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PartyScreen from '../screens/PartyScreen';
 import EventDetailScreen from '../screens/EventDetailScreen';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function PartyStackScreen() {
   return (

@@ -1,10 +1,9 @@
-// navigation/BattlePassStack.js
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BattlePass from '../screens/BattlePass';
 import SuccessScreen from '../screens/SuccessScreen';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function BattlePassStackScreen() {
   return (

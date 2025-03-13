@@ -1,13 +1,12 @@
-// navigation/AppNavigator.js
 import React, { useState, useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import LoginScreen from '../screens/LoginScreen';
 import HomeTabs from './HomeTabs';
-import EventDetailScreen from '../screens/EventDetailScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import MapScreen from '../screens/MapScreen';
+// import MapScreen from '../screens/MapScreen';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   const [token, setToken] = useState(null);
@@ -33,18 +32,17 @@ export default function AppNavigator() {
   };
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {!token ? (
-        <Stack.Screen name="Login">
-          {(props) => <LoginScreen {...props} onLogin={handleLogin} />}
-        </Stack.Screen>
-      ) : (
-        <>
-          <Stack.Screen name="Home" component={HomeTabs} />
-          <Stack.Screen name="Map" component={MapScreen} />
-          {/* Otras pantallas que no requieren de los tabs pueden agregarse aquí */}
-        </>
-      )}
-    </Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {!token ? (
+          <Stack.Screen name="Login">
+            {(props) => <LoginScreen {...props} onLogin={handleLogin} />}
+          </Stack.Screen>
+        ) : (
+          <>
+            <Stack.Screen name="Home" component={HomeTabs} />
+            {/* <Stack.Screen name="Map" component={MapScreen} /> */}
+          </>
+        )}
+      </Stack.Navigator>
   );
 }
